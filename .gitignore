@@ -208,3 +208,4 @@ __marimo__/
 
 # And other stuff that starts with a dot
 .*
+test.py

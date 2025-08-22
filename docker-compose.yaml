@@ -1,0 +1,8 @@
+services:
+  kirahostingbot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: bot:latest
+    restart: unless-stopped
+    env_file: .env
