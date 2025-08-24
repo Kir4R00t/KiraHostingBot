@@ -78,7 +78,7 @@ async def getStatus(interaction: discord.Interaction):
         color=discord.Color.yellow()
     )
     embed.add_field(
-        name='Lista graczy',
+        name='Lista graczy:',
         value=playerlist,
         inline=False
     )
