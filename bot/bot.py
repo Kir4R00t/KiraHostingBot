@@ -63,12 +63,29 @@ def getServerData():
 async def getStatus(interaction: discord.Interaction):
     data = getServerData()
     if data == 'Error':
-        await interaction.response.send_message('There has been an error with extracting servers data ...', ephemeral=True)
-    
-    playerlist = ', '.join(data[0])
-    latency = math.ceil(data[1])
+        await interaction.response.send_message('Serwer nie odpowiada ❌', ephemeral=True)
+    else:
+        playerlist = '\n'.join(data[0])
+        latency = math.ceil(data[1])
 
-    await interaction.response.send_message(f'Server is online ! Player list: {playerlist}; Ping response time is ~{latency}ms')
+        embedTitle = 'Serwer jest ONLINE ✅️'
+        embedDesc = f'Czas odpowiedzi serwera {latency}'
+        embedFooter = f'Liczba aktywnych graczy: {len(playerlist)}'
+        
+    embed = discord.Embed(
+        title=embedTitle,
+        description=embedDesc,
+        color=discord.Color.yellow()
+    )
+    embed.add_field(
+        name='Lista graczy',
+        value=playerlist,
+        inline=False
+    )
+    embed.set_footer(text=embedFooter)
+
+
+    await interaction.response.send_message(embed=embed)
 
 def main():
     bot.run(BOT_TOKEN)
