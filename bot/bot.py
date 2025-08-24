@@ -69,8 +69,8 @@ async def getStatus(interaction: discord.Interaction):
         latency = math.ceil(data[1])
 
         embedTitle = 'Serwer jest ONLINE ✅️'
-        embedDesc = f'Czas odpowiedzi serwera {latency}'
-        embedFooter = f'Liczba aktywnych graczy: {len(playerlist)}'
+        embedDesc = f'Czas odpowiedzi serwera ~{latency}ms'
+        embedFooter = f'Liczba aktywnych graczy: {len(data[0])}'
         
     embed = discord.Embed(
         title=embedTitle,
